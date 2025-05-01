@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     data = request.get_json()
     if data is None:
@@ -31,12 +31,12 @@ def index():
 
 def fetch_conversion_factor(source_currency, amount, destination_currency):
     url = "https://api.currencyapi.com/v3/latest?apikey=cur_live_OP81yTcBVUNaIbLMrCJHtgjvsHKiYABs4G96Gzsv&currencies={}&base_currency={}".format(
-    destination_currency, source_currency)
+        destination_currency, source_currency)
     response = requests.get(url)
     response = response.json()
     return response['data'][destination_currency]['value']
 
 
 if __name__ == '__main__':
-    # port = int(os.environ.get("PORT", 14568))
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
