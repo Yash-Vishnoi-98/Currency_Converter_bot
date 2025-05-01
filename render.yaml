@@ -1,9 +1,6 @@
 services:
   - type: web
-    name: currency-converter-api
+    name: currency-converter
     env: python
-    buildCommand: ""
-    startCommand: python app.py
-    envVars:
-      - key: FLASK_ENV
-        value: development
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
