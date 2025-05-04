@@ -32,7 +32,7 @@ def index():
     print(jsonify(response))
     return jsonify(response)
 
-
+ 
 def fetch_conversion_factor(source_currency, amount, destination_currency):
     url = "https://api.currencyapi.com/v3/latest?apikey=cur_live_OP81yTcBVUNaIbLMrCJHtgjvsHKiYABs4G96Gzsv&currencies={}&base_currency={}".format(
         destination_currency, source_currency)
